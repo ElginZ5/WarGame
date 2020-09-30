@@ -107,16 +107,14 @@ public class Card<T> extends AbstractList<T>{
 	// index must be within our list
 	public T remove (int index) {
 		
-		Node curr = head;
-		
 		if (index == 0) {
 			
-			curr = curr.next;
-			Node temp = curr.next;
-			curr.next = curr;
-			return temp.info;
+			head = head.next;
+			return head.info;
 			
 		} else {
+			
+			Node curr = head;
 		
 			for (int i = 0; i < index-1; i++) {
 			
@@ -225,7 +223,7 @@ public class Card<T> extends AbstractList<T>{
 					player1.remove(0);
 					player2.remove(0);
 					
-					System.out.println(player1.get(0));
+					//System.out.println(player1.get(0));
 					System.out.println("Player 1 Wins the Round!");
 						
 				} else if (player2.get(0) > player1.get(0)) {
@@ -235,10 +233,58 @@ public class Card<T> extends AbstractList<T>{
 					player2.remove(0);
 					player1.remove(0);
 					
-					System.out.println(player2.get(0));
+					//System.out.println(player2.get(0));
 					System.out.println("Player 2 Wins the Round!");
 						
-				}
+				} else if (player1.get(0) == player2.get(0)) {
+					
+					System.out.println("It is War!");
+					System.out.println("The next two cards in the deck for player 1 are an "+player1.get(1)
+					+" and an "+player1.get(2));
+					System.out.println("The next two cards in the deck for player 2 are an "+player2.get(1)
+					+" and an "+player2.get(2));
+					
+					if ((player1.get(1)+player1.get(2)) > (player2.get(1)+player2.get(2))) {
+						
+						System.out.println("Player 1 wins the war!");
+						
+						player1.add(player1.get(0));
+						player1.add(player1.get(1));
+						player1.add(player1.get(2));
+						player1.add(player2.get(0));
+						player1.add(player2.get(1));
+						player1.add(player2.get(2));
+						
+						player1.remove(0);
+						player1.remove(1);
+						player1.remove(2);
+						
+						player2.remove(0);
+						player2.remove(1);
+						player2.remove(2);
+						
+					} else if ((player1.get(1)+player1.get(2)) < (player2.get(1)+player2.get(2))) {
+						
+						System.out.println("Player 2 wins the war!");
+						
+						player2.add(player1.get(0));
+						player2.add(player1.get(1));
+						player2.add(player1.get(2));
+						player2.add(player2.get(0));
+						player2.add(player2.get(1));
+						player2.add(player2.get(2));
+						
+						player2.remove(0);
+						player2.remove(1);
+						player2.remove(2);
+						
+						player1.remove(0);
+						player1.remove(1);
+						player1.remove(2);
+						
+					}
+					
+				} 
 					
 			} 
 		}
@@ -289,30 +335,13 @@ public class Card<T> extends AbstractList<T>{
 			
 		}
 		
-		//initialDeck.shuffle(initialDeck);
-		//initialDeck.shuffle(initialDeck);
-		//initialDeck.shuffle(initialDeck);
+		initialDeck.shuffle(initialDeck);
+		initialDeck.shuffle(initialDeck);
+		initialDeck.shuffle(initialDeck);
 		
 		//System.out.println(initialDeck);
-		//initialDeck.playGame(initialDeck);
-		//System.out.println(initialDeck.get(0));
-		//initialDeck.remove(0);
-		//System.out.println(initialDeck);
-		
-		testDeck.add(1);
-		testDeck.add(2);
-		testDeck.add(3);
-		testDeck.add(4);
-		testDeck.add(5);
-		testDeck.add(6);
-		testDeck.add(7);
-		System.out.println(testDeck);
-		testDeck.remove(0);
-		System.out.println(testDeck);
-		
+		initialDeck.playGame(initialDeck);
 		
 	}
-
-
 	
 }
