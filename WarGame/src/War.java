@@ -1,7 +1,7 @@
 import java.util.AbstractList;
 import java.util.Scanner;
 
-public class Card<T> extends AbstractList<T>{
+public class War<T> extends AbstractList<T>{
 	
 	private Node head;
 	
@@ -148,7 +148,7 @@ public class Card<T> extends AbstractList<T>{
 		return size;
 	}
 	
-	public Card<Integer> shuffle (Card<Integer> initialDeck) {
+	public War<Integer> shuffle (War<Integer> initialDeck) {
 		
 		for (int i = 1; i <= 52; i++) {
 			
@@ -176,10 +176,10 @@ public class Card<T> extends AbstractList<T>{
 		
 	}
 	
-	public void playGame (Card<Integer> cardDeck) {
+	public void playGame (War<Integer> cardDeck) {
 		
-		Card<Integer> player1 = new Card<Integer>();
-		Card<Integer> player2 = new Card<Integer>();
+		War<Integer> player1 = new War<Integer>();
+		War<Integer> player2 = new War<Integer>();
 		
 		boolean winGame = false;
 		
@@ -322,8 +322,8 @@ public class Card<T> extends AbstractList<T>{
 	
 	public static void main (String[] args) {
 		
-		Card<Integer> initialDeck = new Card<Integer>();
-		Card<Integer> testDeck = new Card<Integer>();
+		War<Integer> initialDeck = new War<Integer>();
+		War<Integer> testDeck = new War<Integer>();
 		
 		for (int i = 1; i <= 13; i++) {
 			
